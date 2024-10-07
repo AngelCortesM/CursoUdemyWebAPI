@@ -1,0 +1,6 @@
+@CursoUdemyWebAPI_HostAddress = http://localhost:5206
+
+GET {{CursoUdemyWebAPI_HostAddress}}/empleado/
+Accept: application/json
+
+###
