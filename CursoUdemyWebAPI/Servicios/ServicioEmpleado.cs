@@ -6,19 +6,19 @@ namespace CursoUdemyWebAPI.Servicios
 
         private readonly List<Empleado> listaEmpleados = new() {
         new Empleado{
-            Id = 1, Nombre = "Juan", CodEmpleado= "A001", Edad = 25, Email="mail1@mail.es", FechaAlta=DateTime.Now
+            Id = 1, Nombre = "Juan", CodEmpleado= "A001", Edad = 25, Email="mail1@mail.es", FechaAlta=DateTime.Now, FechaBaja=null
         },
             new Empleado{
-            Id = 1, Nombre = "Pedro", CodEmpleado= "A011", Edad = 65, Email="mail2@mail.es", FechaAlta=DateTime.Now
+            Id = 1, Nombre = "Pedro", CodEmpleado= "A011", Edad = 65, Email="mail2@mail.es", FechaAlta=DateTime.Now, FechaBaja=null
         },
             new Empleado{
-            Id = 1, Nombre = "Alfredo", CodEmpleado= "A021", Edad = 55, Email="mail3@mail.es", FechaAlta=DateTime.Now
+            Id = 1, Nombre = "Alfredo", CodEmpleado= "A021", Edad = 55, Email="mail3@mail.es", FechaAlta=DateTime.Now, FechaBaja=null
         },
             new Empleado{
-            Id = 1, Nombre = "Pablo", CodEmpleado= "A031", Edad = 45, Email="mail4@mail.es", FechaAlta=DateTime.Now
+            Id = 1, Nombre = "Pablo", CodEmpleado= "A031", Edad = 45, Email="mail4@mail.es", FechaAlta=DateTime.Now, FechaBaja=null
         },
             new Empleado{
-            Id = 1, Nombre = "Ricardo", CodEmpleado= "A041", Edad = 57, Email="mail5@mail.es", FechaAlta=DateTime.Now
+            Id = 1, Nombre = "Ricardo", CodEmpleado= "A041", Edad = 57, Email="mail5@mail.es", FechaAlta=DateTime.Now, FechaBaja=null
         }
         };
         public IEnumerable<Empleado> DameEmpleados()

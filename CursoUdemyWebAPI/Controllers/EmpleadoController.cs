@@ -9,34 +9,39 @@ namespace CursoUdemyWebAPI.Controllers
     [ApiController]
     public class EmpleadoController : ControllerBase
     {
-        private readonly IServicioEmpleado _servicioEmpleado;
-        public EmpleadoController(IServicioEmpleado servicioEmpleado)
+        private readonly IServicioEmpleadoSQL _servicioEmpleado;
+        public EmpleadoController(IServicioEmpleadoSQL servicioEmpleado)
         {
             _servicioEmpleado = servicioEmpleado;
         }
 
         [HttpGet]
+        [Route("variosEmpleados")]
         public IEnumerable<EmpleadoDTO> DameEmpleados()
         {
             var listaEmpleados = _servicioEmpleado.DameEmpleados().Select(e => e.convertirDTO());
             return listaEmpleados;
         }
-        [HttpGet("{codEmpleado}")]
+
+
+        [HttpGet("1Empleado/{codEmpleado}")]
         public ActionResult<EmpleadoDTO> DameEmpleado(string codEmpleado)
         {
             var empleado = _servicioEmpleado.DameEmpleado(codEmpleado).convertirDTO();
                if (empleado is null)
-            { return NotFound(); }
+            { return NotFound("Empleado no encontrado"); }
 
             return empleado;
         }
 
+  
         [HttpPost]
+        [Route("nuevoEmpleado")]
         public ActionResult<EmpleadoDTO> NuevoEmpleado(EmpleadoDTO e)
         {
             Empleado empleado = new Empleado
             {
-                Id = _servicioEmpleado.DameEmpleados().Max(x => x.Id) + 1,
+                    
                 CodEmpleado = e.CodEmpleado,
                 Nombre = e.Nombre,
                 Email = e.Email,
@@ -48,7 +53,9 @@ namespace CursoUdemyWebAPI.Controllers
             return empleado.convertirDTO();
         }
 
+  
         [HttpPut]
+        [Route("modificarEmpleado")]
         public ActionResult<EmpleadoDTO> ModificarEmpleado(EmpleadoDTO e)
         {
             var empleadoAux = _servicioEmpleado.DameEmpleado(e.CodEmpleado);
@@ -67,7 +74,9 @@ namespace CursoUdemyWebAPI.Controllers
             return e;
         }
 
+    
         [HttpDelete]
+        [Route("eliminarEmpleado")]
         public ActionResult BajaEmpleado(string codEmpleado)
         {
             var empleadoAux = _servicioEmpleado.DameEmpleado(codEmpleado);

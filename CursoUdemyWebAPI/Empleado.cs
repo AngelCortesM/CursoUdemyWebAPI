@@ -8,6 +8,7 @@
         public string Email { get; set; }
         public int Edad { get; set; }
         public DateTime FechaAlta { get; set; }
+        public DateTime? FechaBaja { get; set; }
 
     }
 }
